@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: docker.io/nginx:alpine
+    volumes:
+      - ./src:/usr/share/nginx/html
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    ports:
+      - "8080:80"
+    links:
+      - php-fpm
+
+  php-fpm:
+    image: localhost/streamrip
+    volumes:
+      - ./src:/usr/share/nginx/html
+    expose:
+      - "9000"
