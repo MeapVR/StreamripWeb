@@ -1,14 +1,14 @@
 # Epic docker image 
 FROM docker.io/php:fpm-alpine
 
-# Install Python, pip, and other dependencies
+# Installs poetry
 RUN apk add --no-cache poetry
 
 # Create a work/directory for your project
 WORKDIR /app
-COPY . /app
+COPY ./root /app
 
-# Copy the PHP files for the web interface
+# Copies the PHP files for the web interface
 COPY src /usr/share/nginx/html
 
 # epic poetry install 

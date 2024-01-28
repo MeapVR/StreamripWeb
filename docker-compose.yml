@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   nginx:
-    image: docker.io/nginx:alpine
+    build: ./nginx/
     volumes:
       - ./src:/usr/share/nginx/html
       - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
@@ -12,7 +12,7 @@ services:
       - php-fpm
 
   php-fpm:
-    image: localhost/streamrip
+    build: ./
     volumes:
       - ./src:/usr/share/nginx/html
     expose:
