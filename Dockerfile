@@ -1,17 +1,17 @@
-# Epic docker image 
+# Docker image
 FROM docker.io/php:fpm-alpine
 
 # Installs poetry
 RUN apk add --no-cache poetry
 
-# Create a work/directory for your project
+# Creates a directory
 WORKDIR /app
 COPY ./root /app
 
-# Copies the PHP files for the web interface
+# Copies the webdev files for webUI
 COPY src /usr/share/nginx/html
 
-# epic poetry install 
+# Installs dependencies
 RUN poetry install
 
 # Expose where PHP-FPM is running on 
