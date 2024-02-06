@@ -8,6 +8,8 @@ RUN apk add --no-cache poetry
 WORKDIR /app
 COPY ./root /app
 
+
+
 # Copies the webdev files for webUI
 COPY src /usr/share/nginx/html
 
