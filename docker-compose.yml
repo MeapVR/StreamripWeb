@@ -8,7 +8,9 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
     ports:
       - "8080:80"
-    links:
+    networks:
+      - app-network
+    depends_on:
       - php-fpm
 
   php-fpm:
@@ -17,3 +19,10 @@ services:
       - ./src:/usr/share/nginx/html
     expose:
       - "9000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
